@@ -8,9 +8,9 @@ import java.lang.reflect.Method;
 
 @SuppressWarnings("unused")
 public class JuiceAgentBootstrap {
-    public static void start(String[] args) {
+    public static void start(String args_string) {
         // parse arguments
-        InjectionInfo info = new InjectionInfo(args);
+        InjectionInfo info = new InjectionInfo(args_string);
 
         // print arguments
         System.out.println("[JuiceAgent API] =================");
