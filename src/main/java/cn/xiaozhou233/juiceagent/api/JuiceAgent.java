@@ -4,7 +4,7 @@ package cn.xiaozhou233.juiceagent.api;
 public class JuiceAgent {
 
     // ===== Environment =====
-    public static native boolean init();
+    public static native boolean init(String runtimeDir);
 
     // ===== ClassPath Injection =====
     public static native boolean addToBootstrapClassLoaderSearch(String jarPath);

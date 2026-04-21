@@ -8,11 +8,10 @@ import java.util.Arrays;
 public class InjectionInfo {
     private static final int argsNum = 5;
 
-    private String entryJarPath;
-    private String entryClass;
-    private String entryMethod;
-    private String injectionDir;
-    private String libPath;
+    private String Version;
+    private String JuiceAgentAPIJarPath;
+    private String JuiceAgentNativeLibraryPath;
+    private String RuntimeDir;
 
     public InjectionInfo(String args_string) {
         if (args_string == null || args_string.isEmpty()) {
@@ -26,20 +25,17 @@ public class InjectionInfo {
                 throw new IllegalArgumentException("Invalid argument: " + arg);
             }
             switch (kv[0]) {
-                case "EntryJarPath":
-                    entryJarPath = kv[1];
+                case "Version":
+                    Version = kv[1];
                     break;
-                case "EntryClass":
-                    entryClass = kv[1];
+                case "JuiceAgentAPIJarPath":
+                    JuiceAgentAPIJarPath = kv[1];
                     break;
-                case "EntryMethod":
-                    entryMethod = kv[1];
+                case "JuiceAgentNativeLibraryPath":
+                    JuiceAgentNativeLibraryPath = kv[1];
                     break;
-                case "InjectionDir":
-                    injectionDir = kv[1];
-                    break;
-                case "JuiceAgentNativePath":
-                    libPath = kv[1];
+                case "RuntimeDir":
+                    RuntimeDir = kv[1];
                     break;
                 default:
                     break;

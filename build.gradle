@@ -10,6 +10,9 @@ repositories {
 }
 
 dependencies {
+    // Source: https://mvnrepository.com/artifact/io.github.wasabithumb/jtoml
+    implementation 'io.github.wasabithumb:jtoml:1.5.2'
+
     testImplementation platform('org.junit:junit-bom:5.10.0')
     testImplementation 'org.junit.jupiter:junit-jupiter'
 
@@ -32,4 +35,23 @@ tasks.withType(JavaCompile).configureEach {
 
 test {
     useJUnitPlatform()
+}
+
+// Include dependencies in the jar
+tasks.jar {
+    destinationDirectory.set(file("out"))
+
+    duplicatesStrategy = DuplicatesStrategy.EXCLUDE
+
+    manifest {
+        attributes(
+                'Build-Version': version
+        )
+    }
+
+    from {
+        configurations.runtimeClasspath.collect {
+            it.isDirectory() ? it : zipTree(it)
+        }
+    }
 }
